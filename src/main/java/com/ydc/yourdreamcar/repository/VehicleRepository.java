@@ -1,8 +1,10 @@
 package com.ydc.yourdreamcar.repository;
 
+import com.redis.om.spring.repository.RedisDocumentRepository;
 import com.ydc.yourdreamcar.entity.Vehicle;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface VehicleRepository extends JpaRepository<Vehicle, Long> {
+@Repository
+public interface VehicleRepository extends RedisDocumentRepository<Vehicle, String> {
     Vehicle getVehicleByName(String name);
 }

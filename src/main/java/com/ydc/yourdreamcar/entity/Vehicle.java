@@ -1,31 +1,26 @@
 package com.ydc.yourdreamcar.entity;
 
+import com.redis.om.spring.annotations.Document;
+import com.redis.om.spring.annotations.Indexed;
 import com.ydc.yourdreamcar.entity.enums.Color;
 import com.ydc.yourdreamcar.entity.enums.Fuel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-@Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@Document
 public class Vehicle {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Indexed
+    private String id;
+    @Indexed
     private String name;
+    @Indexed
     private Color color;
+    @Indexed
     private Fuel fuel;
-
-    @ManyToOne
-    private Brand brand;
 }
